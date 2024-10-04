@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app.views import RegisterView, LoginView, CourseListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('courses/', CourseListView.as_view(), name='course_list'),
+    path('courses/<int:category_id>/', CourseListView.as_view(), name='course_list_by_category'),
 ]
